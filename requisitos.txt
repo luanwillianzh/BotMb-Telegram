@@ -1,4 +1,4 @@
 telebot
 pytelegrambotapi
-dotenv
+python-dotenv
 requests
