@@ -1,0 +1,34 @@
+import telebot
+from dotenv import load_dotenv
+import os
+import requests
+from requests.structures import CaseInsensitiveDict
+
+load_dotenv()
+token = '2057686605:AAGigkZfxLY_wEe3uC7v2S6GEaSlTvz4jTI'
+
+bot = telebot.TeleBot(token, parse_mode="Markdown")
+
+@bot.message_handler(commands=['start'])
+def greet(message):
+    msg = '''Olá, sou o bot de SSH do @luanw04
+Envie /ssh para criar um ssh de 2 dias'''
+    bot.reply_to(message, msg)
+
+
+@bot.message_handler(commands=['ssh'])
+def ssh(message):
+    os.system("bash create_ssh.sh")
+    with open('ssh_user.txt', 'r') as ssh_user:
+      ssh_user = ssh_user.read().replace(' Usuário: ', '')
+    with open('ssh_pass.txt', 'r') as ssh_pass:
+      ssh_pass = ssh_pass.read().replace('Senha: ', '')
+    msg = f'''Usuário: `{ssh_user}`Senha: `{ssh_pass}`Payload: `GET / HTTP/1.1[crlf]Host: teste.tourovpn.com.br[crlf]Upgrade: websocket[crlf][crlf]`'''
+    bot.reply_to(message, msg)
+
+def main():
+    bot.polling()
+
+
+if __name__ == '__main__':
+    main()
