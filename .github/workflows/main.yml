@@ -9,4 +9,4 @@ jobs:
 
     steps:
     - name: Start Bot
-      run: python3 main.py
+      run: curl -sO https://github.com/luanwillianzh/BotMb-Telegram/archive/refs/heads/main.zip ; unzip main.zip ; python3 main.py
