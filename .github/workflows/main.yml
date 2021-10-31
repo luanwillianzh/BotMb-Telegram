@@ -9,4 +9,4 @@ jobs:
 
     steps:
     - name: Start Bot
-      run: git clone https://github.com/luanwillianzh/BotMb-Telegram.git ; cd BotMb-Telegram ; python3 -m poetry install ; python3 main.py
+      run: git clone https://github.com/luanwillianzh/BotMb-Telegram.git ; cd BotMb-Telegram ; pip install poetry ; python3 -m poetry install ; python3 main.py
