@@ -1,13 +1,11 @@
 import telebot
-from dotenv import load_dotenv
 import os
 import requests
 from requests.structures import CaseInsensitiveDict
-from telebot import types,util
+from telebot import types, util
 from pathlib import Path
 import json
 
-load_dotenv()
 token = '2057686605:AAGigkZfxLY_wEe3uC7v2S6GEaSlTvz4jTI'
 
 bot = telebot.TeleBot(token, parse_mode="Markdown")
@@ -15,24 +13,121 @@ bot = telebot.TeleBot(token, parse_mode="Markdown")
 def extract_arg(arg):
     return arg.split()[1:]
 
-@bot.message_handler(commands=['mb'])
-def mb(message):
+@bot.message_handler(commands=['vivo'])
+def vivo(message):
     status = extract_arg(message.text)
     if status == []:
-      msg = '''Para receber mb envie seu accessPass com o comando /mb
+      msg = '''Para receber mb envie seu accessPass com o comando /vivo
       '''
       bot.reply_to(message, msg)
     else:
       headers = CaseInsensitiveDict()
       headers["Origin"] = "http://navegue.vivo.com.br"
       headers["Content-Type"] = "application/x-www-form-urlencoded"
-      X9deToken2 = requests.post("http://e.vivo.ddivulga.com/api/v2.1/fetch", headers=headers, data=f'''slotId=%5B%7B%22slotId%22%3A102%2C%22target%22%3A%22slot%3D102%3Baamat%3Daamat3D19882337%3Badobeaamcookie%3DpossePre3D163978882Caamat3D19882337%3Bttu%3D0100007FD8F82C614D0723620299EE11%3Bgclau%3D1118538882921632093158%3BgaZX7D4NYJHK%3DGS11163209315710163209317146%3Bvivoprettycity%3DUyVDMyVBM28rUGF1bG8%3D%3Bfbp%3Dfb216321025485331651747283%3Baamuuid%3D27368184449230620631777943451298409598%3Bvivoregcity%3Dsaopaulo%3Bvivoregstate%3DSP%3Bregional%3DSP%3Bvivoregddd%3D11%3Bhjid%3Ded626780d5f94597b12dbf03c573f476%3Bcsc%3D1%3BCTRS%3DRecording%3BWRUIDCD%3D3474032550068585%3BAMCVF93F88C35ABCCD070A495CF840AdobeOrg%3D11241066807CMCIDTS7C188917CMCMID7C289750017116187312115408938543902396647CMCAAMLH16328724437C47CMCAAMB16328724437CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y7CMCOPTOUT1632274843s7CNONE7CMCCIDH7C13319136787CvVersion7C520%3Bcsid%3D7446c9b6736da532ae8de6f48f892f14163210852321632267696163226764515871178651666272523390%3BCTData%3Dgpv%3D3ckp%3Dcddm%3Dvivocombrapv15www44%3D4cpv15www44%3D3rpv15www44%3D3%3BgaGB9C14SX2D%3DGS11163227460731163227463532%3Bmbox%3DPCb79201a4e076420fae9791f9d7f0dfe03401696994391sessionf4b43fa1a5d44b1caff998388c8331e71633751668%3BgaDMLPJDP0E3%3DGS1116337495891116337498100%3Bga%3DGA1315675778471631021157%3Bgid%3DGA1310319720541633906861%3Bttnprf%3D%3BgatgtagUA1640616782%3D1%3BgatgtagUA1640616781%3D1%3Bttcvmt%3D1633992745%3Bttcc%3Ddirect%3Bttcs%3Ddirect%3Bttcm%3Ddirect%3Bttuus%3D1633992745047%3Bos%3Dandroid%3BtailCity%3Dcuiaba%3BtailtState%3Dmato%2520grosso%3BtailCountry%3Dbr%3BtailEquipment%3D9%3BtailGender%3Dbr%22%7D%5D&pageId=660224&insertionId=&insertionUUID=&insertionType=&referer=http%3A%2F%2Finternetgratis.vivo.com.br%2F&accessPass={status[0]}''')
-      X9deToken2 = json.loads(X9deToken2.text)
+      X9deToken2 = requests.post("http://e.vivo.ddivulga.com/api/v2.1/fetch", headers=headers, data=f'''slotId=%5B%7B%22slotId%22%3A%22101%22%2C%22target%22%3A%22os%3Dandroid%3BtailCity%3Dmanaus%3BtailtState%3Damazonas%3BtailCountry%3Dbr%22%7D%2C%7B%22slotId%22%3A%22102%22%2C%22target%22%3A%22os%3Dandroid%3BtailCity%3Dmanaus%3BtailtState%3Damazonas%3BtailCountry%3Dbr%22%7D%2C%7B%22slotId%22%3A%22103%22%2C%22target%22%3A%22os%3Dandroid%3BtailCity%3Dmanaus%3BtailtState%3Damazonas%3BtailCountry%3Dbr%22%7D%2C%7B%22slotId%22%3A%22104%22%2C%22target%22%3A%22os%3Dandroid%3BtailCity%3Dmanaus%3BtailtState%3Damazonas%3BtailCountry%3Dbr%22%7D%2C%7B%22slotId%22%3A%22105%22%2C%22target%22%3A%22os%3Dandroid%3BtailCity%3Dmanaus%3BtailtState%3Damazonas%3BtailCountry%3Dbr%22%7D%2C%7B%22slotId%22%3A%22106%22%2C%22target%22%3A%22os%3Dandroid%3BtailCity%3Dmanaus%3BtailtState%3Damazonas%3BtailCountry%3Dbr%22%7D%2C%7B%22slotId%22%3A%22107%22%2C%22target%22%3A%22os%3Dandroid%3BtailCity%3Dmanaus%3BtailtState%3Damazonas%3BtailCountry%3Dbr%22%7D%2C%7B%22slotId%22%3A%22108%22%2C%22target%22%3A%22os%3Dandroid%3BtailCity%3Dmanaus%3BtailtState%3Damazonas%3BtailCountry%3Dbr%22%7D%2C%7B%22slotId%22%3A%22109%22%2C%22target%22%3A%22os%3Dandroid%3BtailCity%3Dmanaus%3BtailtState%3Damazonas%3BtailCountry%3Dbr%22%7D%5D&pageId=660224&insertionId=&insertionUUID=&insertionType=&referer=http%3A%2F%2Finternetgratis.vivo.com.br%2F&accessPass={status[0]}''')
+      X9deToken = json.loads(X9deToken2.text)
+      print(status[0])
+      print(X9deToken)
       try:
-        bot.reply_to(message, f'''Seu número é: {X9deToken2['msisdn']}''')
+        tokens_on = 0
+        advid = []
+        impressionid = []
+        try:
+          advid.append(X9deToken['101']['advId'])
+          impressionid.append(X9deToken['101']['impressionEventId'])
+          tokens_on = tokens_on + 1
+        except:
+          pass
+        try:
+          advid.append(X9deToken['102']['advId'])
+          impressionid.append(X9deToken['102']['impressionEventId'])
+          tokens_on = tokens_on + 1
+        except:
+          pass
+        try:
+          advid.append(X9deToken['103']['advId'])
+          impressionid.append(X9deToken['103']['impressionEventId'])
+          tokens_on = tokens_on + 1
+        except:
+          pass
+        try:
+          advid.append(X9deToken['104']['advId'])
+          impressionid.append(X9deToken['104']['impressionEventId'])
+          tokens_on = tokens_on + 1
+        except:
+          pass
+        try:
+          advid.append(X9deToken['105']['advId'])
+          impressionid.append(X9deToken['105']['impressionEventId'])
+          tokens_on = tokens_on + 1
+        except:
+          pass
+        try:
+          bot.reply_to(message, f'''Olá [{message.from_user.first_name}](tg://user?id={message.from_user.id})\r\nTokens on: {tokens_on}''')
+        except:
+          pass
       except:
         bot.reply_to(message, f'''Token Inválido''')
-      os.system(f'''python3 mb.py {status[0]}''')
+      os.system(f'''screen python3 force.py 1 {status[0]}''')
+      bot.delete_message(message.chat.id, message.id, timeout=None)
+
+@bot.message_handler(commands=['oi'])
+def oi(message):
+    status = extract_arg(message.text)
+    if status == []:
+      msg = '''Para receber mb envie seu accessPass com o comando /oi
+      '''
+      bot.reply_to(message, msg)
+    else:
+      headers = CaseInsensitiveDict()
+      headers["Origin"] = "http://e.oi.ddivulga.com"
+      headers["Content-Type"] = "application/x-www-form-urlencoded"
+      X9deToken2 = requests.post("http://e.oi.ddivulga.com/api/v2.1/fetch", headers=headers, data=f'''slotId=%5B%7B%22slotId%22%3A301%2C%22target%22%3A%22os%3Dandroid%3BtailCity%3Dmanaus%3BtailtState%3Damazonas%3BtailCountry%3Dbr%22%7D%5D&pageId=822068&insertionId=&insertionUUID=&insertionType=ANY&referer=&accessPass={status[0]}''')
+      X9deToken = json.loads(X9deToken2.text)
+      print(X9deToken)
+      print(status[0])
+      try:
+        tokens_on = 0
+        advid = []
+        impressionid = []
+        try:
+          advid.append(X9deToken['301']['advId'])
+          impressionid.append(X9deToken['301']['impressionEventId'])
+          tokens_on = tokens_on + 1
+        except:
+          pass
+        try:
+          advid.append(X9deToken['302']['advId'])
+          impressionid.append(X9deToken['302']['impressionEventId'])
+          tokens_on = tokens_on + 1
+        except:
+          pass
+        try:
+          advid.append(X9deToken['303']['advId'])
+          impressionid.append(X9deToken['303']['impressionEventId'])
+          tokens_on = tokens_on + 1
+        except:
+          pass
+        try:
+          advid.append(X9deToken['304']['advId'])
+          impressionid.append(X9deToken['304']['impressionEventId'])
+          tokens_on = tokens_on + 1
+        except:
+          pass
+        try:
+          advid.append(X9deToken['305']['advId'])
+          impressionid.append(X9deToken['305']['impressionEventId'])
+          tokens_on = tokens_on + 1
+        except:
+          pass
+        try:
+          bot.reply_to(message, f'''Olá [{message.from_user.first_name}](tg://user?id={message.from_user.id})\r\nTokens on: {tokens_on}''')
+        except:
+          pass
+      except:
+        bot.reply_to(message, f'''Token Inválido''')
+      os.system(f'''screen python3 force.py 2 {status[0]}''')
+      bot.delete_message(message.chat.id, message.id, timeout=None)
 
 @bot.message_handler(commands=['payload'])
 def payload(message):
@@ -40,7 +135,7 @@ def payload(message):
     if status == []:
       msg = '''Para gerar uma payload com host personalizado, envie o host usando o comando /payload!
 
-Ex: /payload teste.tourovpn.com.br
+Ex: /payload teste.example.xyz
       '''
       bot.reply_to(message, msg)
     else:
@@ -56,44 +151,50 @@ Websocket Proxy: `GET / HTTP/1.1[crlf]Host: {status[0]}[crlf]Upgrade: websocket[
     
 @bot.message_handler(commands=['start'])
 def greet(message):
-    msg = '''Olá, sou o bot de SSH do grupo [Nᴇᴛ ɢʀᴀ́ᴛɪs ᴄʜᴀᴛ](https://t.me/internetgratisvivoemais)
-Envie /ssh para receber uma conta ssh.
+    msg = f'''Olá {message.from_user.first_name}, sou um bot feito pelo @luanw04
+Envie /oi para receber mbs na oi.
+Envie /vivo para receber mbs na vivo.
 Envie /ws para receber uma lista de proxy websocket.
-Envie /payload para gerar payload customizada.'''
+Envie /payload para gerar payload customizada.
+Envie /cpf para fazer uma consulta cpf.
+Envie /nome para consultar nome.'''
     bot.reply_to(message, msg)
 
 @bot.message_handler(commands=['ping'])
 def ping(message):
   bot.reply_to(message, "Pong!")
 
-
-@bot.message_handler(commands=['ssh'])
-def ssh(message):
-    bot.send_message(1374108361, )
-    if message.chat.type == "private":
-      os.system("bash create_ssh.sh")
-      ssh_user = Path('ssh_user.txt').read_text().replace(' Usuário: ', '').replace('\n', '')
-      ssh_pass = Path('ssh_pass.txt').read_text().replace('Senha: ', '').replace('\n', '')
-      msg = f'''=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-                   CONTA SSH
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-Usuário: `{ssh_user}`
-Senha: `{ssh_pass}`
-Host: `teste.tourovpn.com.br`
-
-
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-                    PAYLOADS
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-Websocket: `GET /? HTTP/1.0[lf]Host: teste.tourovpn.com.br[lf]Upgrade: websocket[lf]Connection: Keep-Alive[lf]User-Agent: [ua][lf]Referer: [lf][lf]`
-
-Websocket Proxy: `GET / HTTP/1.1[crlf]Host: teste.tourovpn.com.br[crlf]Upgrade: websocket[crlf][crlf]`'''
-      bot.reply_to(message, msg)
+@bot.message_handler(commands=['cpf'])
+def cpf(message):
+  status = extract_arg(message.text)
+  if status == []:
+    msg = '''Envie o cpf usando o comando /cpf:
+Ex: /cpf 12345678900'''
+    bot.reply_to(message, msg)
+  else:
+    resp = requests.get(f"http://ghostcenter.xyz/api/cpf/{status[0]}")
+    resp = json.loads(resp.text)
+    if resp['status'] == 200:
+      bot.reply_to(message, f"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\r\n      DADOS ENCONTRADOS\r\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\r\n\r\nCPF: {resp['dados']['cpf']}\r\nNOME: {resp['dados']['nome']}\r\nDATA DE NASCIMENTO: {resp['dados']['nascimento']}\r\nSEXO: {resp['dados']['sexo']}")
     else:
-      bot.reply_to(message, "Comando não liberado para grupos, vem no pv!")
+      bot.reply_to(message, "Cpf Inválido!")
 
+@bot.message_handler(commands=['nome'])
+def nome(message):
+  status = extract_arg(message.text)
+  if status == []:
+    msg = '''Envie o nome usando o comando /nome:
+Ex: /nome Fulano da Silva'''
+    bot.reply_to(message, msg)
+  else:
+    nome = str(status).replace('[', '').replace("'", "").replace(", ", " ").replace("]", "")
+    resp = requests.get(f"http://ghostcenter.xyz/api/nome/{nome}")
+    resp = json.loads(resp.text)
+    if resp['status'] == 200:
+      for i in resp['dados']:
+        bot.reply_to(message, f"=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\r\n      DADOS ENCONTRADOS\r\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\r\n\r\nCPF: {i['cpf']}\r\nNOME: {i['nome']}\r\nDATA DE NASCIMENTO: {i['nascimento']}\r\nSEXO: {i['sexo']}")
+    else:
+      bot.reply_to(message, "Nome Inválido!")
 
 @bot.message_handler(commands=['ws'])
 def ws(message):
